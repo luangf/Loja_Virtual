@@ -26,6 +26,8 @@ public class AvaliacaoProduto implements Serializable {
 
 	private Integer nota; // 0-5
 
+	private String descricao;
+	
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
 	private Pessoa pessoa;
@@ -34,6 +36,14 @@ public class AvaliacaoProduto implements Serializable {
 	@JoinColumn(name = "produto_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "produto_fk"))
 	private Produto produto;
 
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+	public String getDescricao() {
+		return descricao;
+	}
+	
 	public Long getId() {
 		return id;
 	}
