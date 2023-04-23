@@ -4,27 +4,33 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import junit.framework.TestCase;
+import lojavirtual.controller.AcessoController;
 import lojavirtual.model.Acesso;
 import lojavirtual.repository.AcessoRepository;
-import lojavirtual.service.AcessoService;
 
 @SpringBootTest(classes = LojaVirtualApplication.class)
-class LojaVirtualApplicationTests {
+public class LojaVirtualApplicationTests extends TestCase {
 
 	@Autowired
-	private AcessoService acessoService;
+	private AcessoController acessoController;
 	
-	//@Autowired
-	//private AcessoRepository acessoRepository;
+	@Autowired
+	private AcessoRepository acessoRepository;
 	
 	@Test
 	public void testeCadastraAcesso() {
-		
 		Acesso acesso=new Acesso();
+		
 		acesso.setDescricao("ROLE_ADMIN");
 		
-		acessoService.save(acesso);
+		assertEquals(true, acesso.getId() == null);
 		
+		acesso=acessoController.salvarAcesso(acesso).getBody();
+		
+		assertEquals(true, acesso.getId() > 0); //expected, actual
+		
+		assertEquals("ROLE_ADMIN", acesso.getDescricao());
 	}
 
 }
