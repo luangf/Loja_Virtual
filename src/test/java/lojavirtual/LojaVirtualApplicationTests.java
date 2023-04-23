@@ -3,20 +3,18 @@ package lojavirtual;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Profile;
 
 import junit.framework.TestCase;
 import lojavirtual.controller.AcessoController;
 import lojavirtual.model.Acesso;
-import lojavirtual.repository.AcessoRepository;
 
+@Profile("dev")
 @SpringBootTest(classes = LojaVirtualApplication.class)
 public class LojaVirtualApplicationTests extends TestCase {
 
 	@Autowired
 	private AcessoController acessoController;
-	
-	@Autowired
-	private AcessoRepository acessoRepository;
 	
 	@Test
 	public void testeCadastraAcesso() {
