@@ -56,8 +56,8 @@ public class Produto implements Serializable {
 	private Integer qtdEstoque = 0;
 	
 	private Integer qtdAlertaEstoque = 0;
-	private String linkYoutube;
 	private Boolean alertaQtdEstoque = Boolean.FALSE;
+	private String linkYoutube;
 	private Integer qtdClique = 0;
 
 	public void setAtivo(Boolean ativo) {
