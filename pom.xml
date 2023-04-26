@@ -14,7 +14,7 @@
 	<groupId>lojavirtual</groupId>
 	<artifactId>loja_virtual</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Loja_Virtual</name>
+	<name>loja_virtual</name>
 	<description>loja virtual</description>
 	<!-- Gerar war precisa colocar dentro de um servidor, já o jar; o springboot já tem internamente um servidor tomcat -->
 	<packaging>jar</packaging>
