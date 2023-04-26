@@ -34,7 +34,9 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter implements H
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
 		.disable().authorizeRequests().antMatchers("/").permitAll()
-		.antMatchers("/index").permitAll()
+		.antMatchers("/index", "/pagamento/**", "resources/**", "/static/**", "/templates/**", "classpath:/static/**", "classpath:/resources/**", "classpath:/templates/**").permitAll()
+		.antMatchers(HttpMethod.GET, "/pagamento/**", "resources/**", "/static/**", "/templates/**", "classpath:/static/**", "classpath:/resources/**", "classpath:/templates/**").permitAll()
+		.antMatchers(HttpMethod.POST, "/pagamento/**", "resources/**", "/static/**", "/templates/**", "classpath:/static/**", "classpath:/resources/**", "classpath:/templates/**").permitAll()
 		.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 		
 		/* redireciona ou da um retorno para index quando desloga*/
@@ -59,9 +61,8 @@ public class WebConfigSecurity extends WebSecurityConfigurerAdapter implements H
 	// Ignora algumas URLs: livres de autenticação
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-//		web.ignoring().antMatchers(HttpMethod.GET, "/salvarAcesso")
-//		              .antMatchers(HttpMethod.POST, "/salvarAcesso")
-//					  .antMatchers(HttpMethod.DELETE, "/deletarAcesso");
+		web.ignoring().antMatchers(HttpMethod.GET, "/pagamento/**", "resources/**", "/static/**","/templates/**", "classpath:/static/**", "classpath:/resources/**", "classpath:/templates/**", "/webjars/**", "/WEB-INF/classes/static/**")
+		              .antMatchers(HttpMethod.POST, "/pagamento/**", "resources/**", "/static/**", "/templates/**", "classpath:/static/**", "classpath:/resources/**", "classpath:/templates/**", "/webjars/**", "/WEB-INF/classes/static/**");
 	}
 	
 }

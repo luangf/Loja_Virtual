@@ -66,7 +66,7 @@ public class JWTTokenAutenticacaoService {
 			if (token != null) {
 				String tokenLimpo = token.replace(TOKEN_PREFIX, "").trim(); //sem o Bearer e sem espaço; fsa.dafd.sa....
 				
-				// Faz a validacao do token do usuário na requisicao e obtem o user
+				// Faz a validacao do token do usuário na requisicao e obtem o login do user
 				String user = Jwts.parser() //Conversão
 						.setSigningKey(SECRET) //Assinatura
 						.parseClaimsJws(tokenLimpo)
