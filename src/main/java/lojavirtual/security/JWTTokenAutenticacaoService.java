@@ -18,7 +18,7 @@ public class JWTTokenAutenticacaoService {
 	// Token de validade de 11 dias
 	private static final long EXPIRATION_TIME = 950400000;
 	
-	// Chave de senha para juntar com o JWT
+	// Chave de senha para juntar com o JWT, senha boa/mt boa, pode ser exemplo: gerada..base 64/md5
 	private static final String SECRET = "fsdnnfsdau893u823@!0-=0-sfdnnlkfsda";
 	
 	private static final String TOKEN_PREFIX = "Bearer";
@@ -35,7 +35,7 @@ public class JWTTokenAutenticacaoService {
 				.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME)) //Tempo de expiração
 				.signWith(SignatureAlgorithm.HS512, SECRET).compact();
 		
-		// Separado em 3 partes, 2 pontos
+		// Separado em 3 partes, 2 pontos; usuario, senha, data de expiração
 		// Ex: Bearer fdfgidsu849kjod0.dgf87gsdfg78fsd780dfdfs.gsdf78g68gfdshu08husd
 		String token = TOKEN_PREFIX + " " + JWT;
 		
