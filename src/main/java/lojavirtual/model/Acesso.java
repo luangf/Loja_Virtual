@@ -1,6 +1,7 @@
 package lojavirtual.model;
 
 import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "acesso")
@@ -24,6 +27,7 @@ public class Acesso implements GrantedAuthority {
 	@Column(nullable = false)
 	private String descricao; // Acesso; ROLE_ADMIN, ROLE_GERENTE
 
+	@JsonIgnore
 	@Override
 	public String getAuthority() {
 		return this.descricao;

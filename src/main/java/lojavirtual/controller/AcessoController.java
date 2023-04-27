@@ -1,5 +1,7 @@
 package lojavirtual.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,6 +52,12 @@ public class AcessoController {
 	@GetMapping(value="**/obterAcesso/{id}")
 	public ResponseEntity<Acesso> obterAcesso(@PathVariable("id") Long id){
 		return new ResponseEntity<Acesso>(acessoRepository.findById(id).get(), HttpStatus.OK);
+	}
+	
+	@ResponseBody
+	@GetMapping(value = "**/buscarPorDesc/{desc}")
+	public ResponseEntity<List<Acesso>> buscarPorDesc(@PathVariable("desc") String desc) { 
+		return new ResponseEntity<List<Acesso>>(acessoRepository.buscarAcessoDesc(desc),HttpStatus.OK);
 	}
 	
 }
