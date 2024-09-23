@@ -1,2 +1,7 @@
 Back end development of a virtual store, under development.
-with PostgreSQL
+
+Dealing with PostgreSQL database.
+
+Testing API with Postman.
+
+Using JUnit and Mockito for tests.
